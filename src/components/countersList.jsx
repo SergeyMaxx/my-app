@@ -19,10 +19,16 @@ const CountersList = () => {
 
   const handleReset = () => setCounters(initialState)
 
-  const handlerIncrement = id => {
-    const index = counters.findIndex(c => c.id === id)
-    counters[index].value++
-    setCounters([...counters])
+  // const handlerIncrement = id => {
+  //   const index = counters.findIndex(c => c.id === id)
+  //   counters[index].value++
+  //   setCounters([...counters])
+  // }
+
+  const handleInc = id => {
+    setCounters(counters.map(count => {
+      return count.id === id ? {...count, value: count.value + 1} : count
+    }))
   }
 
   const handlerDecrement = id => {
@@ -37,7 +43,7 @@ const CountersList = () => {
         <Counter
           key={count.id}
           onDelete={handleDelete}
-          onIncrement={handlerIncrement}
+          onIncrement={handleInc}
           onDecrement={handlerDecrement}
           count={count}
         />
