@@ -23,7 +23,7 @@ const CountersList = () => {
   // }
 
   const handleInc = id => {
-    setCounters(counters.map(count => {
+    setCounters(p => p.map(count => {
       return count.id === id ? {...count, value: count.value + 1} : count
     }))
   }
