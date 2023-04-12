@@ -13,11 +13,8 @@ const CountersList = () => {
   const [counters, setCounters] = useState(initialState)
 
   const handleDelete = id => {
-    const newCounters = counters.filter(counter => counter.id !== id)
-    setCounters(newCounters)
+    setCounters(p => p.filter(c => c.id !== id))
   }
-
-  const handleReset = () => setCounters(initialState)
 
   // const handlerIncrement = id => {
   //   const index = counters.findIndex(c => c.id === id)
@@ -48,7 +45,10 @@ const CountersList = () => {
           count={count}
         />
       ))}
-      <button className="btn btn-primary btn-sm m-2" onClick={handleReset}>
+      <button
+        className="btn btn-primary btn-sm m-2"
+        onClick={() => setCounters(initialState)}
+      >
         Сброс
       </button>
     </>
